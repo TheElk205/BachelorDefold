@@ -1,0 +1,24 @@
+local camera = require "orthographic.camera"
+
+go.property("number_of_agents", 50)
+go.property("border", 1)
+
+function init(self)
+	msg.post("#", "show_first_screen")
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("show_first_screen") then
+		self.camera_bounds = camera.screen_to_world_bounds(nil)
+		pprint(self.camera_bounds)
+		-- Spawn agents here
+		pprint("Spawning agents " .. self.number_of_agents)
+		math.randomseed(os.time())
+		for i=1, self.number_of_agents do 
+			local pos = vmath.vector3(0,0,0)
+			pos.x = math.random(self.camera_bounds.x + self.border, self.camera_bounds.z - self.border)
+			pos.y = math.random(self.camera_bounds.w + self.border, self.camera_bounds.y - self.border)
+			local agent = factory.create("#factory", pos)
+		end
+	end
+end

@@ -1,0 +1,6 @@
+local camera = require "orthographic.camera"
+
+function init(self)
+	-- msg.post("#camera", "acquire_camera_focus")
+	camera_bounds = camera.screen_to_world_bounds("/camera#script")
+end

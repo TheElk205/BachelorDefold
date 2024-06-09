@@ -1,0 +1,2468 @@
+script: "/main/algorithm_parameters.gui_script"
+fonts {
+  name: "system_font"
+  font: "/builtins/fonts/debug/always_on_top.font"
+}
+textures {
+  name: "kenneyblue"
+  texture: "/gooey-kenney/images/kenneyblue.atlas"
+}
+background_color {
+  x: 0.0
+  y: 0.0
+  z: 0.0
+  w: 0.0
+}
+nodes {
+  position {
+    x: 478.0
+    y: 200.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 900.0
+    y: 400.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "kenneyblue/blue_panel"
+  id: "settings_panel"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 5.0
+    y: 5.0
+    z: 5.0
+    w: 5.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: false
+  size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 329.381
+    y: -156.834
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEMPLATE
+  id: "button_apply"
+  parent: "settings_panel"
+  layer: ""
+  inherit_alpha: true
+  alpha: 1.0
+  template: "/gooey-kenney/components/button.gui"
+  template_node_child: false
+  custom_type: 0
+  enabled: true
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "gooey/blue_button04"
+  id: "button_apply/bg"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "button_apply"
+  layer: "below"
+  inherit_alpha: true
+  slice9 {
+    x: 6.0
+    y: 6.0
+    z: 6.0
+    w: 10.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: true
+  size_mode: SIZE_MODE_AUTO
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "Apply"
+  font: "example"
+  id: "button_apply/label"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  outline {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  shadow {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  parent: "button_apply/bg"
+  layer: "text"
+  inherit_alpha: true
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  overridden_fields: 8
+  template_node_child: true
+  text_leading: 1.0
+  text_tracking: 0.0
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: -125.0
+    y: 190.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 300.0
+    y: 200.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: ""
+  id: "boids"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_NW
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "settings_panel"
+  layer: ""
+  inherit_alpha: false
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 0.41
+  template_node_child: false
+  size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 228.0
+    y: -45.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEMPLATE
+  id: "input_cohesion"
+  parent: "boids"
+  layer: ""
+  inherit_alpha: false
+  alpha: 1.0
+  template: "/gooey-kenney/components/input.gui"
+  template_node_child: false
+  custom_type: 0
+  enabled: true
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 110.0
+    y: 50.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "gooey/blue_button10"
+  id: "input_cohesion/bg"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "input_cohesion"
+  layer: "below"
+  inherit_alpha: true
+  slice9 {
+    x: 6.0
+    y: 6.0
+    z: 6.0
+    w: 6.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  overridden_fields: 4
+  template_node_child: true
+  size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: -49.839005
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 100.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "<text>"
+  font: "example"
+  id: "input_cohesion/text"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_W
+  outline {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  shadow {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  parent: "input_cohesion/bg"
+  layer: "text"
+  inherit_alpha: true
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  overridden_fields: 1
+  overridden_fields: 4
+  template_node_child: true
+  text_leading: 1.0
+  text_tracking: 0.0
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 2.0
+    y: 20.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: ""
+  id: "input_cohesion/cursor"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "input_cohesion/text"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: true
+  size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 228.0
+    y: -108.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEMPLATE
+  id: "input_separation"
+  parent: "boids"
+  layer: ""
+  inherit_alpha: false
+  alpha: 1.0
+  template: "/gooey-kenney/components/input.gui"
+  template_node_child: false
+  custom_type: 0
+  enabled: true
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 110.0
+    y: 50.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "gooey/blue_button10"
+  id: "input_separation/bg"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "input_separation"
+  layer: "below"
+  inherit_alpha: true
+  slice9 {
+    x: 6.0
+    y: 6.0
+    z: 6.0
+    w: 6.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  overridden_fields: 4
+  template_node_child: true
+  size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: -49.839005
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 100.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "<text>"
+  font: "example"
+  id: "input_separation/text"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_W
+  outline {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  shadow {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  parent: "input_separation/bg"
+  layer: "text"
+  inherit_alpha: true
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  overridden_fields: 1
+  overridden_fields: 4
+  template_node_child: true
+  text_leading: 1.0
+  text_tracking: 0.0
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 2.0
+    y: 20.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: ""
+  id: "input_separation/cursor"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "input_separation/text"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: true
+  size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 227.0
+    y: -169.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEMPLATE
+  id: "input_alignment"
+  parent: "boids"
+  layer: ""
+  inherit_alpha: false
+  alpha: 1.0
+  template: "/gooey-kenney/components/input.gui"
+  template_node_child: false
+  custom_type: 0
+  enabled: true
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 110.0
+    y: 50.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "gooey/blue_button10"
+  id: "input_alignment/bg"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "input_alignment"
+  layer: "below"
+  inherit_alpha: true
+  slice9 {
+    x: 6.0
+    y: 6.0
+    z: 6.0
+    w: 6.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  overridden_fields: 1
+  overridden_fields: 4
+  overridden_fields: 21
+  template_node_child: true
+  size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: -47.839005
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 100.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "<text>"
+  font: "example"
+  id: "input_alignment/text"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_W
+  outline {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  shadow {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  parent: "input_alignment/bg"
+  layer: "text"
+  inherit_alpha: true
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  overridden_fields: 1
+  overridden_fields: 4
+  template_node_child: true
+  text_leading: 1.0
+  text_tracking: 0.0
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 2.0
+    y: 20.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: ""
+  id: "input_alignment/cursor"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "input_alignment/text"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: true
+  size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 7.0
+    y: -17.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "Boids"
+  font: "system_font"
+  id: "label_boids"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_W
+  outline {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  shadow {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  parent: "boids"
+  layer: ""
+  inherit_alpha: false
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  template_node_child: false
+  text_leading: 1.0
+  text_tracking: 0.0
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 24.518
+    y: -45.177
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEMPLATE
+  id: "checkbox_cohesion"
+  parent: "boids"
+  layer: ""
+  inherit_alpha: false
+  alpha: 1.0
+  template: "/gooey-kenney/components/checkbox.gui"
+  template_node_child: false
+  custom_type: 0
+  enabled: true
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "gooey/grey_box"
+  id: "checkbox_cohesion/box"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "checkbox_cohesion"
+  layer: "below"
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: true
+  size_mode: SIZE_MODE_AUTO
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 30.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "choesion"
+  font: "example"
+  id: "checkbox_cohesion/label"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_W
+  outline {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  shadow {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  parent: "checkbox_cohesion"
+  layer: "text"
+  inherit_alpha: true
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  overridden_fields: 8
+  template_node_child: true
+  text_leading: 1.0
+  text_tracking: 0.0
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 24.518
+    y: -108.177
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEMPLATE
+  id: "checkbox_separation"
+  parent: "boids"
+  layer: ""
+  inherit_alpha: false
+  alpha: 1.0
+  template: "/gooey-kenney/components/checkbox.gui"
+  template_node_child: false
+  custom_type: 0
+  enabled: true
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "gooey/grey_box"
+  id: "checkbox_separation/box"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "checkbox_separation"
+  layer: "below"
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: true
+  size_mode: SIZE_MODE_AUTO
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 30.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "separation"
+  font: "example"
+  id: "checkbox_separation/label"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_W
+  outline {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  shadow {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  parent: "checkbox_separation"
+  layer: "text"
+  inherit_alpha: true
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  overridden_fields: 8
+  template_node_child: true
+  text_leading: 1.0
+  text_tracking: 0.0
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 24.518
+    y: -169.177
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEMPLATE
+  id: "checkbox_alignment"
+  parent: "boids"
+  layer: ""
+  inherit_alpha: false
+  alpha: 1.0
+  template: "/gooey-kenney/components/checkbox.gui"
+  template_node_child: false
+  custom_type: 0
+  enabled: true
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "gooey/grey_box"
+  id: "checkbox_alignment/box"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "checkbox_alignment"
+  layer: "below"
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: true
+  size_mode: SIZE_MODE_AUTO
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 30.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "alignment"
+  font: "example"
+  id: "checkbox_alignment/label"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_W
+  outline {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  shadow {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  parent: "checkbox_alignment"
+  layer: "text"
+  inherit_alpha: true
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  overridden_fields: 8
+  template_node_child: true
+  text_leading: 1.0
+  text_tracking: 0.0
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 350.381
+    y: 234.166
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEMPLATE
+  id: "button_open_close"
+  parent: "settings_panel"
+  layer: ""
+  inherit_alpha: true
+  alpha: 1.0
+  template: "/gooey-kenney/components/button.gui"
+  template_node_child: false
+  custom_type: 0
+  enabled: true
+}
+nodes {
+  position {
+    x: 72.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 49.0
+    y: 49.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "gooey/blue_button04"
+  id: "button_open_close/bg"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "button_open_close"
+  layer: "below"
+  inherit_alpha: true
+  slice9 {
+    x: 6.0
+    y: 6.0
+    z: 6.0
+    w: 10.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  overridden_fields: 1
+  overridden_fields: 4
+  overridden_fields: 38
+  template_node_child: true
+  size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "X"
+  font: "example"
+  id: "button_open_close/label"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  outline {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  shadow {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  parent: "button_open_close/bg"
+  layer: "text"
+  inherit_alpha: true
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  overridden_fields: 8
+  template_node_child: true
+  text_leading: 1.0
+  text_tracking: 0.0
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: -441.0
+    y: 132.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 300.0
+    y: 120.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: ""
+  id: "settings"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_W
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "settings_panel"
+  layer: ""
+  inherit_alpha: false
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 0.41
+  template_node_child: false
+  size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 58.0
+    y: -29.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEMPLATE
+  id: "input_speed"
+  parent: "settings"
+  layer: ""
+  inherit_alpha: false
+  alpha: 1.0
+  template: "/gooey-kenney/components/input.gui"
+  template_node_child: false
+  custom_type: 0
+  enabled: true
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 110.0
+    y: 50.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "gooey/blue_button10"
+  id: "input_speed/bg"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "input_speed"
+  layer: "below"
+  inherit_alpha: true
+  slice9 {
+    x: 6.0
+    y: 6.0
+    z: 6.0
+    w: 6.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  overridden_fields: 4
+  template_node_child: true
+  size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: -49.839005
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 100.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "<text>"
+  font: "example"
+  id: "input_speed/text"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_W
+  outline {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  shadow {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  parent: "input_speed/bg"
+  layer: "text"
+  inherit_alpha: true
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  overridden_fields: 1
+  overridden_fields: 4
+  template_node_child: true
+  text_leading: 1.0
+  text_tracking: 0.0
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 2.0
+    y: 20.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: ""
+  id: "input_speed/cursor"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "input_speed/text"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: true
+  size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 198.0
+    y: -29.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEMPLATE
+  id: "input_turning_factor"
+  parent: "settings"
+  layer: ""
+  inherit_alpha: false
+  alpha: 1.0
+  template: "/gooey-kenney/components/input.gui"
+  template_node_child: false
+  custom_type: 0
+  enabled: true
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 110.0
+    y: 50.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "gooey/blue_button10"
+  id: "input_turning_factor/bg"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "input_turning_factor"
+  layer: "below"
+  inherit_alpha: true
+  slice9 {
+    x: 6.0
+    y: 6.0
+    z: 6.0
+    w: 6.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  overridden_fields: 4
+  template_node_child: true
+  size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: -47.839005
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 100.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "<text>"
+  font: "example"
+  id: "input_turning_factor/text"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_W
+  outline {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  shadow {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  parent: "input_turning_factor/bg"
+  layer: "text"
+  inherit_alpha: true
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  overridden_fields: 1
+  overridden_fields: 4
+  template_node_child: true
+  text_leading: 1.0
+  text_tracking: 0.0
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 2.0
+    y: 20.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: ""
+  id: "input_turning_factor/cursor"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "input_turning_factor/text"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: true
+  size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 6.0
+    y: 7.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "Speed"
+  font: "system_font"
+  id: "text_speed"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_W
+  outline {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  shadow {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  parent: "settings"
+  layer: ""
+  inherit_alpha: false
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  template_node_child: false
+  text_leading: 1.0
+  text_tracking: 0.0
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 147.0
+    y: 7.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "Turning Factor"
+  font: "system_font"
+  id: "text_turning_factor"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_W
+  outline {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  shadow {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  parent: "settings"
+  layer: ""
+  inherit_alpha: false
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  template_node_child: false
+  text_leading: 1.0
+  text_tracking: 0.0
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 4.0
+    y: 41.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "Settings"
+  font: "system_font"
+  id: "label"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_W
+  outline {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  shadow {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  parent: "settings"
+  layer: ""
+  inherit_alpha: false
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  template_node_child: false
+  text_leading: 1.0
+  text_tracking: 0.0
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+layers {
+  name: "below"
+}
+layers {
+  name: "text"
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT
+max_nodes: 512

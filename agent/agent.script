@@ -1,0 +1,129 @@
+require "main.utils"
+local Boids = require "behaviours.boids"
+local camera = require "orthographic.camera"
+
+local parameters = {
+	--general
+	["speed"] = {
+		["value"] = 0,
+		["enabled"] = true
+	},
+	["turning_factor"] = {
+		["value"] = 0.1,
+		["enabled"] = false
+	},
+	-- boids
+	["cohesion"] = {
+		["value"] = 0.1,
+		["enabled"] = false
+	},
+	["separation"] = {
+		["value"] = 0.1,
+		["enabled"] = false
+	},
+	["alignment"] = {
+		["value"] = 0.2,
+		["enabled"] = false
+	}
+}
+
+friends = {}
+
+go.property("velocity", vmath.vector3(0,0,0))
+
+function init(self)
+	-- Random starting direction. 
+	self.direction = vmath.vector3(0,0,0)
+	self.direction.y = (math.random(200)-100)/100 + self.direction.y
+	self.direction.x = (math.random(200)-100)/100 + self.direction.x
+	self.direction = vmath.normalize(self.direction)
+	self.friends = {}
+	label.set_text("#no_neighbours", "" ..  #self.friends)
+	msg.post("#", "show_first_screen")
+
+	msg.post("/gui#edit_algorithms", "report_in")
+end
+
+function update(self, dt)
+	-- We flip the direction if we hit the screen border
+	-- print(self.camera_bounds)
+	if self.camera_bounds.x < go.get_position().x then
+		self.direction.x = -self.direction.x
+	end
+
+	if self.camera_bounds.z > go.get_position().x then
+		self.direction.x = -self.direction.x
+	end
+
+	if self.camera_bounds.y < go.get_position().y then
+		self.direction.y = -self.direction.y
+	end
+
+	if self.camera_bounds.w > go.get_position().y then
+		self.direction.y = -self.direction.y
+	end
+
+	local neighbours = {}
+	if #self.friends > 0 then
+		
+		for k, v in pairs(self.friends) do
+			local url = msg.url(nil, v, "agent")
+			neighbours[v] = { 
+				["position"] = go.get_position(v),
+				["velocity"] = go.get(url, "velocity")
+			}
+		end
+	end
+	local position = go.get_position()
+	local velocity_offset = vmath.vector3(0, 0, 0)
+	local agent = {
+		["position"] = position,
+		["velocity"] = self.direction
+	}
+	if parameters["separation"]["enabled"] then
+		velocity_offset = velocity_offset + Boids.separation(agent, neighbours, { ["separation"] = parameters["separation"]["value"] })
+	end
+	if parameters["cohesion"]["enabled"] then
+		velocity_offset = velocity_offset + Boids.cohesion(agent, neighbours, { ["cohesion"] = parameters["cohesion"]["value"] })
+	end
+	if parameters["alignment"]["enabled"] then
+		velocity_offset = velocity_offset + Boids.alignment(agent, neighbours, { ["alignment"] = parameters["alignment"]["value"] })
+	end
+	local value = get_current_env_value(position, "temperature")
+	if value ~= nil then
+		print("temperature: " .. value)
+	end
+	-- Apply them
+	self.direction_tmp = vmath.normalize(self.direction + (velocity_offset) * parameters["turning_factor"]["value"] * dt)
+
+	-- Note: this will always be one frame behind!
+	local deltapos = self.direction * dt * parameters["speed"]["value"]
+	go.set_position(go.get_position() + deltapos)
+	local rotation = angle_between_vectors(self.direction, vmath.vector3(0, 1, 0))
+	-- print("Rotation" .. rotation)
+	go.set(go.get_id(), "euler.z", 90-rotation)
+	-- sprite.set_hflip("#fly", self.direction.x < 0)
+	msg.post("#", "update_finished")
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("show_first_screen") then
+		self.camera_bounds = camera.screen_to_world_bounds(nil)
+	elseif message_id == hash("trigger_response") then
+		if message.enter then
+			table.insert(self.friends, message.other_id)
+		else
+			for k, v in pairs(self.friends) do
+				if v == message.other_id then
+					table.remove(self.friends, k)
+					break
+				end
+			end
+		end
+		label.set_text("#no_neighbours", "" ..  #self.friends)
+	elseif message_id == hash("new_parameters") then
+		parameters = message
+	elseif message_id == hash("update_finished") then
+		self.direction = self.direction_tmp
+	end
+end

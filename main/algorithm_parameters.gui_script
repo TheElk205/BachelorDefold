@@ -1,0 +1,110 @@
+local gooey = require "gooey.gooey"
+local kenneyblue = require "gooey-kenney.kenneyblue"
+local camera = require "orthographic.camera"
+
+local parameters = {
+	-- general
+	["speed"] = {
+		["value"] = 60
+	},
+	["turning_factor"] = {
+		["value"] = 0.1
+	},
+	-- boids
+	["cohesion"] = {
+		["value"] = 0.1
+	},
+	["separation"] = {
+		["value"] = 0.3
+	},
+	["alignment"] = {
+		["value"] = 0.2
+	},
+}
+
+local settings_open = true
+local settings_panel = nil
+
+function init(self)
+	gooey.acquire_input()
+	self.objects = {}
+	print(camera.get_zoom(nil))
+	-- camera.set_zoom(nil, 100)
+	-- print(camera.get_zoom(nil))
+	settings_panel = gui.get_node("settings_panel")
+	if not settings_open then
+		gui.set_position(settings_panel, position)
+	end
+end
+
+function on_input(self, action_id, action)
+	local group = kenneyblue.group("group1", function()
+		kenneyblue.button("button_apply", action_id, action, function(button)
+			print("Applying new parameters")
+			parameters = {
+				-- general
+				["speed"] = {
+					["value"] = self.speed["empty"] and parameters["speed"]["value"] or self.speed["text"]
+				},
+				["turning_factor"] = {
+					["value"] = self.turning_factor["empty"] and parameters["turning_factor"]["value"] or self.turning_factor["text"]
+				},
+				-- boids
+				["cohesion"] = {
+					["value"] = self.cohesion["empty"] and parameters["cohesion"]["value"] or self.cohesion["text"],
+					["enabled"] = self.cohesion_checkbox["checked"]
+				},
+				["separation"] = {
+					["value"] = self.separation["empty"] and parameters["separation"]["value"] or self.separation["text"],
+					["enabled"] = self.separation_checkbox["checked"]
+				},["alignment"] = {
+					["value"] = self.alignment["empty"] and parameters["alignment"]["value"] or self.alignment["text"],
+					["enabled"] = self.alignment_checkbox["checked"]
+				}
+			}
+
+			print("New Parameters: ")
+			for k, v in pairs(self.objects) do
+				msg.post(v, "new_parameters", parameters)
+			end
+		end)
+
+		kenneyblue.button("button_open_close", action_id, action, function(button)
+			print("Open / close")
+			move_settings_panel(settings_open)
+		end)
+
+		-- general
+		self.speed = kenneyblue.input("input_speed", gui.KEYBOARD_TYPE_DEFAULT, action_id, action, { empty_text = parameters["speed"]["value"], max_length = 8, allowed_characters = "[%d.]" })
+		self.turning_factor = kenneyblue.input("input_turning_factor", gui.KEYBOARD_TYPE_DEFAULT, action_id, action, { empty_text = parameters["turning_factor"]["value"], max_length = 8, allowed_characters = "[%d.]" })
+
+		-- boids
+		self.cohesion = kenneyblue.input("input_cohesion", gui.KEYBOARD_TYPE_DEFAULT, action_id, action, { empty_text = parameters["cohesion"]["value"], max_length = 8, allowed_characters = "[%d.]" })
+		self.cohesion_checkbox = kenneyblue.checkbox("checkbox_cohesion", action_id, action)
+		self.separation = kenneyblue.input("input_separation", gui.KEYBOARD_TYPE_DEFAULT, action_id, action, { empty_text = parameters["separation"]["value"], max_length = 8, allowed_characters = "[%d.]" })
+		self.separation_checkbox = kenneyblue.checkbox("checkbox_separation", action_id, action)
+		self.alignment = kenneyblue.input("input_alignment", gui.KEYBOARD_TYPE_DEFAULT, action_id, action, { empty_text = parameters["alignment"]["value"], max_length = 8, allowed_characters = "[%d.]" })
+		self.alignment_checkbox = kenneyblue.checkbox("checkbox_alignment", action_id, action)
+		
+	end)
+	return group.consumed
+end
+
+function move_settings_panel(hide)
+	if hide then
+		gui.animate(settings_panel, "position.y", -200, gui.EASING_OUTBOUNCE, 1)
+	else
+		gui.animate(settings_panel, "position.y", 200, gui.EASING_OUTBOUNCE, 1)
+	end
+	settings_open = not settings_open
+end
+function on_reload(self)
+	-- Add input-handling code here
+	-- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("report_in") then
+		table.insert(self.objects, sender)
+	end
+end

@@ -1,0 +1,133 @@
+require "environment.environment"
+
+local elapsed_time = 0
+local camera = require "orthographic.camera"
+
+local environment_count = 0 -- we use this to increse the z value every time we add some env value
+
+local key_value_tints = {
+	["temperature"] = {
+		["tint"] = vmath.vector4(1, 1, 0, 1),
+		["conditionals"] = {
+			{
+				["min"] = 0, --incl
+				["max"] = 25, --excl
+				["tint"] = vmath.vector4(1, 1, 0, 1)
+			},
+			{
+				["min"] = 25,
+				["max"] = 35,
+				["tint"] = vmath.vector4(1, 0.5, 0, 1)
+			},
+			{
+				["min"] = 35,
+				["max"] = 99,
+				["tint"] = vmath.vector4(1, 0, 0, 1)
+			}
+		}
+	}
+}
+
+function init(self)
+	-- msg.post("@render:", "clear_color", {color = vmath.vector4(1, 1, 1, 1)})
+	
+	-- Add initialization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+	heat_source(0, 0, 1280, 22)
+	heat_source(0, 0, 1000, 26)
+	heat_source(0, 0, 500, 36)
+
+	msg.post("#", "show_first_screen")
+end
+
+function heat_source(x, y, radius, temperature)
+	msg.post("#", "new_environment", {
+		["key"] = "temperature",
+		["x"] = x,
+		["y"] = y,
+		["radius"] = radius,
+		["shape"] = "square",
+		["value"] = {
+			["initial_value"] = temperature,
+			["current_value"] = temperature,
+			["duration"] = -1,
+			["final_value"] = temperature
+		}
+	})
+end
+
+function update(self, dt)
+	-- Add update code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+
+	-- iterate all values, check their duration
+	for k, env_var in pairs(dummy_environment) do
+		if env_var["change_rate"] ~= 0 then
+			env_var["value"]["current_value"] = env_var["value"]["initial_value"] + ((elapsed_time - env_var["created_at"]) * env_var["value"]["change_rate"])				
+			if env_var["value"]["duration"] >= 0 and elapsed_time - env_var["created_at"] > env_var["value"]["duration"] then
+				if env_var["value"]["sprite"] ~= nil then
+					go.delete(env_var["value"]["sprite"], true)
+				end
+				dummy_environment[k] = nil
+			end
+		end
+	end
+end
+
+function fixed_update(self, dt)
+	-- This function is called if 'Fixed Update Frequency' is enabled in the Engine section of game.project
+	-- Can be coupled with fixed updates of the physics simulation if 'Use Fixed Timestep' is enabled in
+	-- Physics section of game.project
+	-- Add update code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+	elapsed_time = elapsed_time + dt
+end
+
+function on_message(self, message_id, message, sender)
+	-- Add message-handling code here
+	-- Learn more: https://defold.com/manuals/message-passing/
+	-- Remove this function if not needed
+	if message_id == hash("new_environment") then
+		local sprite = draw_environment(vmath.vector3(message["x"], message["y"], 0), message["radius"])
+		environment_count = environment_count + 1
+		tint_environment(sprite, message["key"], message["value"]["initial_value"])
+		local radius = message["radius"]
+		local for_env = table_merge(message["value"], {
+				["value"] = message["value"]["initial_value"],
+				["sprite"] = sprite
+			 } )
+			merge_into_environment( message["x"],  message["y"], message["key"], radius, "square", for_env, elapsed_time)
+
+	elseif message_id == hash("show_first_screen") then
+		self.camera_bounds = camera.screen_to_world_bounds(nil)
+	end
+
+	print(dummy_environment)
+end
+
+function draw_environment(pos, scale)
+	local env =  factory.create("#factory", pos)
+	local url = msg.url(nil, env, "sprite")
+	go.set(url, "scale", vmath.vector3(scale, scale, scale))
+	go.set(env, "position.z", environment_count * 0.00001)
+	return env
+end
+
+function tint_environment(sprite, key, value)
+	local url = msg.url(nil, sprite, "sprite")
+	for k, v in pairs(key_value_tints) do
+		tint = vmath.vector4(0,0,0,0)
+		if k == key then
+			tint = v["tint"]
+			for k2, v2 in pairs(v["conditionals"]) do
+				if value >= v2["min"] and value < v2["max"] then
+					tint = v2["tint"]
+				end
+			end
+		end
+	end
+	go.set(url, "tint", tint) -- <1>
+end
