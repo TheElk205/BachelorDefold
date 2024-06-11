@@ -10,16 +10,31 @@ local parameters = {
 	["turning_factor"] = {
 		["value"] = 0.1
 	},
-	-- boids
-	["cohesion"] = {
-		["value"] = 0.1
+	["boids"] = {
+		-- boids
+		["cohesion"] = {
+			["value"] = 0.1
+		},
+		["separation"] = {
+			["value"] = 0.3
+		},
+		["alignment"] = {
+			["value"] = 0.2
+		}
 	},
-	["separation"] = {
-		["value"] = 0.3
-	},
-	["alignment"] = {
-		["value"] = 0.2
-	},
+	-- beeclust
+	["beeclust"] = {
+		["waiting"] = {
+			["hit_distance"] = 1,
+			["max_wait_time"] = 5,
+			["time_offset"] = 3,
+			["enabled"] = false
+		},
+		["random_walk"] = {
+			["max_angle"] = 45,
+			["enabled"] = false
+		}
+	}
 }
 
 local settings_open = true
@@ -35,6 +50,24 @@ function init(self)
 	if not settings_open then
 		gui.set_position(settings_panel, position)
 	end
+
+	self.boids = {
+		["cohesion"] = nil,
+		["cohesion_checkbox"] = nil,
+		["separation"] = nil,
+		["separation_checkbox"] = nil,
+		["alignment"] = nil,
+		["alignment_checkbox"] = nil
+	}
+
+	self.beeclust = {
+		["hit_distance"] = nil,
+		["max_wait_time"] = nil,
+		["time_offset"] = nil,
+		["waiting_checkbox"] = nil,
+		["max_angle"] = nil,
+		["random_walk_checkbox"] = nil
+	}
 end
 
 function on_input(self, action_id, action)
@@ -50,16 +83,31 @@ function on_input(self, action_id, action)
 					["value"] = self.turning_factor["empty"] and parameters["turning_factor"]["value"] or self.turning_factor["text"]
 				},
 				-- boids
-				["cohesion"] = {
-					["value"] = self.cohesion["empty"] and parameters["cohesion"]["value"] or self.cohesion["text"],
-					["enabled"] = self.cohesion_checkbox["checked"]
+				["boids"] = {
+					["cohesion"] = {
+						["value"] = self.boids["cohesion"]["empty"] and parameters["boids"]["cohesion"]["value"] or self.boids["cohesion"]["text"],
+						["enabled"] = self.boids["cohesion_checkbox"]["checked"]
+					},
+					["separation"] = {
+						["value"] = self.boids["separation"]["empty"] and parameters["boids"]["separation"]["value"] or self.boids["separation"]["text"],
+						["enabled"] = self.boids["separation_checkbox"]["checked"]
+					},["alignment"] = {
+						["value"] = self.boids["alignment"]["empty"] and parameters["boids"]["alignment"]["value"] or self.boids["alignment"]["text"],
+						["enabled"] = self.boids["alignment_checkbox"]["checked"]
+					}
 				},
-				["separation"] = {
-					["value"] = self.separation["empty"] and parameters["separation"]["value"] or self.separation["text"],
-					["enabled"] = self.separation_checkbox["checked"]
-				},["alignment"] = {
-					["value"] = self.alignment["empty"] and parameters["alignment"]["value"] or self.alignment["text"],
-					["enabled"] = self.alignment_checkbox["checked"]
+				-- boids
+				["beeclust"] = {
+					["waiting"] = {
+						["hit_distance"] = self.beeclust["hit_distance"]["empty"] and parameters["beeclust"]["waiting"]["hit_distance"] or self.beeclust["hit_distance"]["text"],
+						["max_wait_time"] = self.beeclust["max_wait_time"]["empty"] and parameters["beeclust"]["waiting"]["max_wait_time"] or self.beeclust["max_wait_time"]["text"],
+						["time_offset"] = self.beeclust["time_offset"]["empty"] and parameters["beeclust"]["waiting"]["time_offset"] or self.beeclust["time_offset"]["text"],
+						["enabled"] = self.beeclust["waiting_checkbox"]["checked"]
+					},
+					["random_walk"] = {
+						["max_angle"] = self.beeclust["max_angle"]["empty"] and parameters["beeclust"]["random_walk"]["max_angle"] or self.beeclust["max_angle"]["text"],
+						["enabled"] = self.beeclust["random_walk_checkbox"]["checked"]
+					}
 				}
 			}
 
@@ -79,12 +127,20 @@ function on_input(self, action_id, action)
 		self.turning_factor = kenneyblue.input("input_turning_factor", gui.KEYBOARD_TYPE_DEFAULT, action_id, action, { empty_text = parameters["turning_factor"]["value"], max_length = 8, allowed_characters = "[%d.]" })
 
 		-- boids
-		self.cohesion = kenneyblue.input("input_cohesion", gui.KEYBOARD_TYPE_DEFAULT, action_id, action, { empty_text = parameters["cohesion"]["value"], max_length = 8, allowed_characters = "[%d.]" })
-		self.cohesion_checkbox = kenneyblue.checkbox("checkbox_cohesion", action_id, action)
-		self.separation = kenneyblue.input("input_separation", gui.KEYBOARD_TYPE_DEFAULT, action_id, action, { empty_text = parameters["separation"]["value"], max_length = 8, allowed_characters = "[%d.]" })
-		self.separation_checkbox = kenneyblue.checkbox("checkbox_separation", action_id, action)
-		self.alignment = kenneyblue.input("input_alignment", gui.KEYBOARD_TYPE_DEFAULT, action_id, action, { empty_text = parameters["alignment"]["value"], max_length = 8, allowed_characters = "[%d.]" })
-		self.alignment_checkbox = kenneyblue.checkbox("checkbox_alignment", action_id, action)
+		self.boids["cohesion"] = kenneyblue.input("input_cohesion", gui.KEYBOARD_TYPE_DEFAULT, action_id, action, { empty_text = parameters["boids"]["cohesion"]["value"], max_length = 8, allowed_characters = "[%d.]" })
+		self.boids["cohesion_checkbox"] = kenneyblue.checkbox("checkbox_cohesion", action_id, action)
+		self.boids["separation"] = kenneyblue.input("input_separation", gui.KEYBOARD_TYPE_DEFAULT, action_id, action, { empty_text = parameters["boids"]["separation"]["value"], max_length = 8, allowed_characters = "[%d.]" })
+		self.boids["separation_checkbox"] = kenneyblue.checkbox("checkbox_separation", action_id, action)
+		self.boids["alignment"] = kenneyblue.input("input_alignment", gui.KEYBOARD_TYPE_DEFAULT, action_id, action, { empty_text = parameters["boids"]["alignment"]["value"], max_length = 8, allowed_characters = "[%d.]" })
+		self.boids["alignment_checkbox"] = kenneyblue.checkbox("checkbox_alignment", action_id, action)
+
+		-- beeclust
+		self.beeclust["hit_distance"] = kenneyblue.input("input_hit_distance", gui.KEYBOARD_TYPE_DEFAULT, action_id, action, { empty_text = parameters["beeclust"]["waiting"]["hit_distance"], max_length = 8, allowed_characters = "[%d.]" })
+		self.beeclust["max_wait_time"] = kenneyblue.input("input_max_wait_time", gui.KEYBOARD_TYPE_DEFAULT, action_id, action, { empty_text = parameters["beeclust"]["waiting"]["max_wait_time"], max_length = 8, allowed_characters = "[%d.]" })
+		self.beeclust["time_offset"] = kenneyblue.input("input_time_offset", gui.KEYBOARD_TYPE_DEFAULT, action_id, action, { empty_text = parameters["beeclust"]["waiting"]["time_offset"], max_length = 8, allowed_characters = "[%d.]" })
+		self.beeclust["waiting_checkbox"] = kenneyblue.checkbox("checkbox_wait_bee_hit", action_id, action)
+		self.beeclust["max_angle"] = kenneyblue.input("input_max_angle", gui.KEYBOARD_TYPE_DEFAULT, action_id, action, { empty_text = parameters["beeclust"]["random_walk"]["max_angle"], max_length = 8, allowed_characters = "[%d.]" })
+		self.beeclust["random_walk_checkbox"] = kenneyblue.checkbox("checkbox_random_walk", action_id, action)
 		
 	end)
 	return group.consumed

@@ -1,5 +1,6 @@
 require "main.utils"
 local Boids = require "behaviours.boids"
+local Beeclust = require "behaviours.beeclust"
 local camera = require "orthographic.camera"
 
 local parameters = {
@@ -13,18 +14,34 @@ local parameters = {
 		["enabled"] = false
 	},
 	-- boids
-	["cohesion"] = {
-		["value"] = 0.1,
-		["enabled"] = false
+	["boids"] = {
+		["cohesion"] = {
+			["value"] = 0.1,
+			["enabled"] = false
+		},
+		["separation"] = {
+			["value"] = 0.1,
+			["enabled"] = false
+		},
+		["alignment"] = {
+			["value"] = 0.2,
+			["enabled"] = false
+		}
 	},
-	["separation"] = {
-		["value"] = 0.1,
-		["enabled"] = false
-	},
-	["alignment"] = {
-		["value"] = 0.2,
-		["enabled"] = false
+	-- beeclust
+	["beeclust"] = {
+		["waiting"] = {
+			["hit_distance"] = 1,
+			["max_wait_time"] = 5,
+			["time_offset"] = 3,
+			["enabled"] = false
+		},
+		["random_walk"] = {
+			["max_angle"] = 45,
+			["enabled"] = false
+		}
 	}
+
 }
 
 friends = {}
@@ -70,7 +87,8 @@ function update(self, dt)
 			local url = msg.url(nil, v, "agent")
 			neighbours[v] = { 
 				["position"] = go.get_position(v),
-				["velocity"] = go.get(url, "velocity")
+				["velocity"] = go.get(url, "velocity"),
+				["number"] = self.number
 			}
 		end
 	end
@@ -78,16 +96,45 @@ function update(self, dt)
 	local velocity_offset = vmath.vector3(0, 0, 0)
 	local agent = {
 		["position"] = position,
-		["velocity"] = self.direction
+		["velocity"] = self.direction,
+		["number"] = self.number
 	}
-	if parameters["separation"]["enabled"] then
-		velocity_offset = velocity_offset + Boids.separation(agent, neighbours, { ["separation"] = parameters["separation"]["value"] })
+	local agentEnvironment = {}
+	if parameters["boids"]["separation"]["enabled"] then
+		velocity_offset = velocity_offset + Boids.separation(agent, neighbours, 
+		{ 
+			["separation"] = parameters["boids"]["separation"]["value"] 
+		},
+		agentEnvironment)
 	end
-	if parameters["cohesion"]["enabled"] then
-		velocity_offset = velocity_offset + Boids.cohesion(agent, neighbours, { ["cohesion"] = parameters["cohesion"]["value"] })
+	if parameters["boids"]["cohesion"]["enabled"] then
+		velocity_offset = velocity_offset + Boids.cohesion(agent, neighbours, {
+			["cohesion"] = parameters["boids"]["cohesion"]["value"] 
+		},
+		agentEnvironment)
 	end
-	if parameters["alignment"]["enabled"] then
-		velocity_offset = velocity_offset + Boids.alignment(agent, neighbours, { ["alignment"] = parameters["alignment"]["value"] })
+	if parameters["boids"]["alignment"]["enabled"] then
+		velocity_offset = velocity_offset + Boids.alignment(agent, neighbours, 
+		{ 
+			["alignment"] = parameters["boids"]["alignment"]["value"] 
+		},
+		agentEnvironment)
+	end
+	if parameters["beeclust"]["waiting"]["enabled"] then
+		velocity_offset = velocity_offset + Beeclust.waiting(agent, neighbours, 
+		{ 
+			["hit_distance"] = parameters["beeclust"]["waiting"]["hit_distance"],
+			["max_wait_time"] = parameters["beeclust"]["waiting"]["max_wait_time"],
+			["time_offset"] = parameters["beeclust"]["waiting"]["time_offset"] 
+		},
+		agentEnvironment)
+	end
+	if parameters["beeclust"]["random_walk"]["enabled"] then
+		velocity_offset = velocity_offset + Beeclust.randomWalk(agent, neighbours, 
+		{ 
+			["max_angle"] = parameters["beeclust"]["random_walk"]["max_angle"],
+		},
+		agentEnvironment)
 	end
 	local value = get_current_env_value(position, "temperature")
 	if value ~= nil then
@@ -125,5 +172,8 @@ function on_message(self, message_id, message, sender)
 		parameters = message
 	elseif message_id == hash("update_finished") then
 		self.direction = self.direction_tmp
+	elseif message_id == hash("agent_initial_values") then
+		self.number = message["number"]
+		pprint("I Am agent number: " .. self.number)
 	end
 end

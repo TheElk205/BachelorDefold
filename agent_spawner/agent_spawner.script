@@ -19,6 +19,8 @@ function on_message(self, message_id, message, sender)
 			pos.x = math.random(self.camera_bounds.x + self.border, self.camera_bounds.z - self.border)
 			pos.y = math.random(self.camera_bounds.w + self.border, self.camera_bounds.y - self.border)
 			local agent = factory.create("#factory", pos)
+
+			msg.post(agent, "agent_initial_values", { ["number"] = i})
 		end
 	end
 end
