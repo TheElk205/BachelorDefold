@@ -18,7 +18,7 @@ function on_message(self, message_id, message, sender)
 			local pos = vmath.vector3(0,0,0)
 			pos.x = math.random(self.camera_bounds.x + self.border, self.camera_bounds.z - self.border)
 			pos.y = math.random(self.camera_bounds.w + self.border, self.camera_bounds.y - self.border)
-			pos.z = 0.1
+			pos.z = 0.999
 			pprint(pos)
 			local agent = factory.create("#factory", pos)
 
