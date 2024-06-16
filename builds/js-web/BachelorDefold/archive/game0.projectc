@@ -30,8 +30,8 @@ clear_color_alpha = 0
 type = 2D
 max_collision_object_count = 2000
 use_fixed_timestep = 0
-gravity_y = -10
-debug = 1
+gravity_y = 0.0
+debug = 0
 debug_alpha = 0.9
 world_count = 4
 gravity_x = 0
@@ -84,7 +84,7 @@ repeat_delay = 0.5
 repeat_interval = 0.2
 gamepads = /builtins/input/default.gamepadsc
 game_binding = /input/game.input_bindingc
-use_accelerometer = 1
+use_accelerometer = 0
 
 [sprite]
 max_count = 100000

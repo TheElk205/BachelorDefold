@@ -112,7 +112,7 @@ function draw_environment(pos, scale)
 	local env =  factory.create("#factory", pos)
 	local url = msg.url(nil, env, "sprite")
 	go.set(url, "scale", vmath.vector3(scale, scale, scale))
-	go.set(env, "position.z", environment_count * -0.001)
+	go.set(env, "position.z", environment_count * 0.001)
 	return env
 end
 
