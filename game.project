@@ -33,7 +33,11 @@ max_count = 1000
 max_collisions = 1000
 max_collision_object_count = 2000
 debug = 0
+gravity_y = 0.0
 
 [collection]
 max_instances = 2048
+
+[input]
+use_accelerometer = 0
 
