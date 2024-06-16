@@ -32,7 +32,7 @@ max_count = 1000
 [physics]
 max_collisions = 1000
 max_collision_object_count = 2000
-debug = 1
+debug = 0
 
 [collection]
 max_instances = 2048
